@@ -9,16 +9,21 @@ public class FIFOPriorityQueue<E extends Comparable<? super E>> {
     PriorityBlockingQueue<FIFOEntry<E>> queue = new PriorityBlockingQueue<FIFOEntry<E>>();
 
     public void enqueue(E comparable) {
-        FIFOEntry<E> entry = new FIFOEntry<E>(comparable);
+        FIFOEntry<E> entry = (comparable == null) ? null : new FIFOEntry<E>(comparable);
+
         queue.offer(entry);
     }
 
     public E dequeue() {
-        return queue.poll().getEntry();
+        FIFOEntry<E> entry = queue.poll();
+
+        return entry == null ? null : entry.getEntry();
     }
 
     public E peek() {
-        return queue.peek().getEntry();
+        FIFOEntry<E> entry = queue.peek();
+
+        return entry == null ? null : entry.getEntry();
     }
 
     public int count() {

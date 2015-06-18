@@ -38,6 +38,25 @@ public class Message implements Comparable<Message>{
                 + productCode + "]";
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Message message = (Message) o;
+
+        if (instructionType != message.instructionType) return false;
+        return !(productCode != null ? !productCode.equals(message.productCode) : message.productCode != null);
+
+    }
+
+    @Override
+    public int hashCode() {
+        int result = instructionType != null ? instructionType.hashCode() : 0;
+        result = 31 * result + (productCode != null ? productCode.hashCode() : 0);
+        return result;
+    }
+
     public enum InstructionType {
         A, B, C, D
     }

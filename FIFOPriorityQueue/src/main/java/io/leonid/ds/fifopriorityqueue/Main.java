@@ -11,6 +11,7 @@ import java.util.List;
 public class Main {
     public static void main(String[] args) {
         List<Message> messages = new ArrayList<Message>();
+
         messages.add(new Message(InstructionType.B, "M1"));
         messages.add(new Message(InstructionType.A, "M2"));
         messages.add(new Message(InstructionType.A, "M3"));
